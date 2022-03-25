@@ -12,7 +12,7 @@ class MovieOverview extends React.Component {
 
     render() {
         return (
-        <div className='movie-card'>
+        <div className='movie-card' onClick={() => displaySingleMovie(this.state.id)}>
             <img src={this.state.posterPath}/>
             <h1 className='movie-title'>{this.state.title}</h1>
         </div>
