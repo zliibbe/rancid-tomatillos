@@ -2,6 +2,7 @@ import React from 'react';
 
 class MovieOverview extends React.Component {
     constructor ({ key, id, posterPath, title}) {
+        super();
         this.state = {
             id: id,
             title: title,
