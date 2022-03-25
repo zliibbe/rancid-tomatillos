@@ -16,9 +16,10 @@ class App extends React.Component {
   displaySingleMovie = (id) => {
     let foundMovie = this.state.movieData.find(movie => movie.id === id);
     this.setState({currentMovie: foundMovie})
-    // needs to be able to find a movie based on id and maybe set state for a
-    // currentMovie property in App? Then App can render either the 
-    // MoviesContainer or the MovieDetail depending on whether that property exists
+  }
+
+  displayMainDashboard = () => {
+    this.setState({currentMovie: null})
   }
 
   render () {
@@ -28,7 +29,7 @@ class App extends React.Component {
           <h1>Rancid Tomatillos</h1>
         </nav>
         {!this.state.currentMovie && <MoviesContainer  movieData={this.state.movieData} displaySingleMovie={this.displaySingleMovie}/>}
-        {this.state.currentMovie && <MovieDetail movieDetails={this.state.currentMovie}/>}
+        {this.state.currentMovie && <MovieDetail movieDetails={this.state.currentMovie} displayMainDashboard={this.displayMainDashboard}/>}
       </main>
     );
   }
