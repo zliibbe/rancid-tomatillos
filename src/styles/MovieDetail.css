@@ -1,6 +1,6 @@
-* {
+/* * {
   border: 1px solid aqua;
-}
+} */
 
 .poster-img,
 .backdrop-img {
@@ -17,10 +17,18 @@
 .single-movie-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  margin-left: 2em;
 }
 
 .movie-main {
   display: flex;
+  background-color: #121633cb;
+  height: 80%;
+  width: 80%;
+  color: white;
+  border: 5px solid white;
+  border-radius: 13px;
 }
 
 .poster-rating-container,
