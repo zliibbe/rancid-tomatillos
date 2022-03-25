@@ -26,7 +26,8 @@ class App extends React.Component {
         <nav className="header">
           <h1>Rancid Tomatillos</h1>
         </nav>
-        <MoviesContainer  movieData={this.state.movieData} displaySingleMovie={this.displaySingleMovie}/> 
+        {!currentMovie && <MoviesContainer  movieData={this.state.movieData} displaySingleMovie={this.displaySingleMovie}/>}
+        {currentMovie && <MovieDetail movieDetails={this.currentMovie}/>}
       </main>
     );
   }

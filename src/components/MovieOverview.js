@@ -1,7 +1,7 @@
 import React from 'react';
 
 class MovieOverview extends React.Component {
-    constructor ({ key, id, posterPath, title}) {
+    constructor ({ key, id, posterPath, title, displaySingleMovie}) {
         super();
         this.state = {
             id: id,
