@@ -2,6 +2,7 @@ import '../App.css';
 import movieData from '../movieData';
 import React from 'react';
 import MoviesContainer from './MoviesContainer'
+import MovieDetail from './MovieDetail';
 
 class App extends React.Component {
   constructor () {
@@ -26,8 +27,8 @@ class App extends React.Component {
         <nav className="header">
           <h1>Rancid Tomatillos</h1>
         </nav>
-        {!currentMovie && <MoviesContainer  movieData={this.state.movieData} displaySingleMovie={this.displaySingleMovie}/>}
-        {currentMovie && <MovieDetail movieDetails={this.currentMovie}/>}
+        {!this.state.currentMovie && <MoviesContainer  movieData={this.state.movieData} displaySingleMovie={this.displaySingleMovie}/>}
+        {this.state.currentMovie && <MovieDetail movieDetails={this.state.currentMovie}/>}
       </main>
     );
   }
