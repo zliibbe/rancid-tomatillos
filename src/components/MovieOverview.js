@@ -14,7 +14,7 @@ class MovieOverview extends React.Component {
         return (
         <div className='movie-card'>
             <img src={this.state.posterPath}/>
-            <h1>{this.state.title}</h1>
+            <h1 className='movie-title'>{this.state.title}</h1>
         </div>
         )
     }
