@@ -35,4 +35,29 @@
 .title-description-container {
   display: flex;
   flex-direction: column;
+  padding: 1em;
+}
+
+.poster-rating-container {
+  width: 30%;
+}
+
+.title-description-container {
+  width: 50%;
+}
+
+.movie-title {
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+.poster-img {
+  height: 90%;
+  border: 1px solid white;
+}
+
+.genre-section {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 40%;
 }
