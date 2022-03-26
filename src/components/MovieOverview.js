@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/MovieOverview.css'
 
 class MovieOverview extends React.Component {
     constructor ({ key, id, posterPath, title, displaySingleMovie}) {
@@ -15,7 +16,7 @@ class MovieOverview extends React.Component {
         return (
         <div className='movie-card' onClick={() => this.state.displaySingleMovie(this.state.id)}>
             <img src={this.state.posterPath}/>
-            <h1 className='movie-title'>{this.state.title}</h1>
+            <h1 className='movie-title-poster'>{this.state.title}</h1>
         </div>
         )
     }
