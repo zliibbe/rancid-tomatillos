@@ -36,10 +36,10 @@ class App extends React.Component {
       this.setState({
         movieData: data.movies
       })
-      .catch(error => {
-        this.errorHandling()
-        console.warn(error)
     })
+    .catch(error => {
+      this.errorHandling()
+      console.warn(error)
 
     })
   }
