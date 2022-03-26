@@ -10,7 +10,8 @@ class App extends React.Component {
     super();
     this.state = { 
       movieData: [],
-      currentMovie: null
+      currentMovie: null,
+      error: null,
     };
   }
 
@@ -23,12 +24,23 @@ class App extends React.Component {
     this.setState({currentMovie: null})
   }
 
+  errorHandling = () => {
+    this.setState = {
+      error: true
+    }
+  }
+  
   componentDidMount = () => {
     fetchAllMovies('/movies')
     .then(data => {
       this.setState({
         movieData: data.movies
       })
+      .catch(error => {
+        this.errorHandling()
+        console.warn(error)
+    })
+
     })
   }
 
@@ -38,6 +50,7 @@ class App extends React.Component {
         {!this.state.currentMovie && <nav className="header">
           <h1>Rancid Tomatillos</h1>
         </nav>}
+        {this.state.error && <h2 className="error-msg">Error loading movies</h2>}
         {!this.state.currentMovie && <MoviesContainer  movieData={this.state.movieData} displaySingleMovie={this.displaySingleMovie}/>}
         {this.state.currentMovie && <MovieDetail movieDetails={this.state.currentMovie} displayMainDashboard={this.displayMainDashboard}/>}
       </main>
