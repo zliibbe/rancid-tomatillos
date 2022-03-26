@@ -3,12 +3,13 @@ import movieData from '../movieData';
 import React from 'react';
 import MoviesContainer from './MoviesContainer'
 import MovieDetail from './MovieDetail';
+import { fetchAllMovies } from '../apiCalls';
 
 class App extends React.Component {
   constructor () {
     super();
     this.state = { 
-      movieData: movieData.movies,
+      movieData: [],
       currentMovie: null
     };
   }
@@ -20,6 +21,15 @@ class App extends React.Component {
 
   displayMainDashboard = () => {
     this.setState({currentMovie: null})
+  }
+
+  componentDidMount = () => {
+    fetchAllMovies('/movies')
+    .then(data => {
+      this.setState({
+        movieData: data.movies
+      })
+    })
   }
 
   render () {
