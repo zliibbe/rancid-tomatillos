@@ -14,7 +14,7 @@ class MovieOverview extends React.Component {
 
     render() {
         return (
-        <div className='movie-card' onClick={() => this.state.displaySingleMovie(this.state.id)}>
+        <div className='movie-card' tabIndex='1' onClick={() => this.state.displaySingleMovie(this.state.id)}>
             <img src={this.state.posterPath}/>
             <h1 className='movie-title-poster'>{this.state.title}</h1>
         </div>
