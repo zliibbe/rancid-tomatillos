@@ -40,7 +40,6 @@ class App extends React.Component {
     .catch(error => {
       this.errorHandling()
       console.warn(error)
-
     })
   }
 
