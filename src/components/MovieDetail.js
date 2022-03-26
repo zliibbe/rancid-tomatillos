@@ -1,5 +1,6 @@
 import React from 'react';
-import '../styles/MovieDetail.css'
+import '../styles/MovieDetail.css';
+import { fetchSingleMovie } from '../apiCalls';
 
 class MovieDetail extends React.Component {
   constructor( { movieDetails, displayMainDashboard }) {
@@ -9,6 +10,15 @@ class MovieDetail extends React.Component {
       displayMainDashboard: displayMainDashboard
     }
   }
+
+componentDidMount = () => {
+  fetchSingleMovie(this.state.movieDetails.id)
+  .then(data => { 
+    this.setState({
+        movieDetails: data.movie
+    })
+  })
+}
 
   render() {
     return (
@@ -24,13 +34,18 @@ class MovieDetail extends React.Component {
 
             <div className='title-description-container'>
               <h1 className='movie-title'>{this.state.movieDetails.title}</h1>
-              <p className='movie-overview'>New Seasons organic dog parks stumptown gluten free mustachioed bartenders microbrew freegans breweries Alberta Arts local honey gentrification stumptown pearl district outdoorsy. Kristian Foden-Vencil beard 82nd Avenue of Roses Silicon Forest clouds stripclubs vibrant Impossible Burger faux bacon Plaid Pantry farm to table it's raining again Voodoo Donuts food carts Cascadia a dog gym. </p>
+              <p className='movie-overview'>{this.state.movieDetails.overview}</p>
               <div className='genre-section'>
                 <p className='release-date'>{this.state.movieDetails.release_date}</p>
                 <p>⎮</p>
-                <p>Genre goes here</p>
+                <p>{this.state.movieDetails.genres}</p>
                 <p>⎮</p>
-                <p>2h 23m runtime</p>
+                <p>{this.state.movieDetails.runtime} minutes</p>
+              </div>
+              <div className='budget-revenue'>
+                <p className='budget'>Budget: {this.state.movieDetails.budget}</p>
+                <p className='revenue'>Revenue: {this.state.movieDetails.revenue}</p>
+
               </div>
             </div>
           
