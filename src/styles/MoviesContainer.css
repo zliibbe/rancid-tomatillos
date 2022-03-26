@@ -3,4 +3,6 @@
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 1em;
     padding: 1em;
+    background-color: #121633;
+    color: white;
 }
