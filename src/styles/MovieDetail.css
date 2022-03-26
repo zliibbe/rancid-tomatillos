@@ -44,6 +44,7 @@
 
 .title-description-container {
   width: 50%;
+  overflow: scroll;
 }
 
 .movie-title {
