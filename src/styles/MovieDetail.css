@@ -1,7 +1,10 @@
-/* * {
-  border: 1px solid aqua;
-} */
+* {
+  Font-Family: 'Open Sans', Sans-Serif;
+}
 
+h1 {
+  Font-Family: 'Raleway', Sans-Serif;
+}
 .poster-img,
 .backdrop-img {
   height: 400px;
@@ -48,8 +51,13 @@
 }
 
 .movie-title {
+  Font-Family: 'Raleway', Sans-Serif;
   font-size: 3em;
   margin-bottom: 20px;
+}
+
+.movie-overview {
+  Font-Size: 1rem;
 }
 
 .poster-img {
