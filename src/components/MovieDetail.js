@@ -11,20 +11,31 @@ class MovieDetail extends React.Component {
     }
   }
 
+  
   formatCurrency = (cost) => {
     const formatter = new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0})
     return formatter.format(cost)
   }
-
+  
   componentDidMount = () => {
     fetchSingleMovie(this.state.movieDetails.id)
     .then(data => { 
       this.setState({
-          movieDetails: data.movie
+        movieDetails: data.movie
+
       })
     })
   }
 
+  // formatGenres = () => {
+  //   console.log(this.state.movieDetails.genres)
+  //   this.state.movieDetails.genres.map(genre => {
+  //     // return (
+  //     //   {genre, }
+  //     // )
+  //   })
+  // }
+  
   render() {
     return (
       <main className='single-movie-section' style={{backgroundImage: `url(${this.state.movieDetails.backdrop_path})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}}>
@@ -44,7 +55,7 @@ class MovieDetail extends React.Component {
               <div className='genre-section'>
                 <p className='release-date'>{this.state.movieDetails.release_date}</p>
                 <p>⎮</p>
-                <p>{[this.state.movieDetails.genres].join(' , ')}</p>
+                <p>{[this.state.movieDetails.genres].join(', ')}</p>
                 <p>⎮</p>
                 { this.state.movieDetails.runtime ? <p>{this.state.movieDetails.runtime} minutes</p> : <p>No runtime available</p> }
               </div>
