@@ -7,8 +7,13 @@ h1 {
 }
 .poster-img,
 .backdrop-img {
-  height: 40px;
-  width: 300px;
+  /* height: 40px;
+  width: 300px; */
+  object-fit: cover;
+}
+.poster-img {
+  object-fit: cover;
+  margin-left: 2em
 }
 
 .single-movie-section {
@@ -28,16 +33,10 @@ h1 {
 
 .movie-main {
   display: flex;
+  justify-content: space-between;
   height: 80%;
-  width: 80%;
+  width: 100%;
   color: white;
-}
-
-.poster-rating-container,
-.title-description-container {
-  display: flex;
-  flex-direction: column;
-  padding: 1em;
 }
 
 .poster-rating-container {
@@ -47,6 +46,9 @@ h1 {
 .title-description-container {
   width: 70%;
   overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
 }
 
 .movie-title {
@@ -64,10 +66,16 @@ h1 {
   border: 1px solid white;
 }
 
-.genre-section {
+.avg-rating {
+  margin-left: 22.5%;
+}
+
+.movie-details-section {
   display: flex;
-  justify-content: space-around;
-  margin-top: 40%;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 8%;
+  height: 25vh;
 }
 .movie-card {
   opacity: .70;
