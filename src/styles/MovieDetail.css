@@ -41,11 +41,11 @@ h1 {
 }
 
 .poster-rating-container {
-  width: 30%;
+  width: 40%;
 }
 
 .title-description-container {
-  width: 50%;
+  width: 70%;
   overflow: scroll;
 }
 
@@ -83,4 +83,23 @@ h1 {
   transform: scale(1.02);
   opacity: 1;
   transition: opacity .01s ease-in;
+}
+
+.back-to-main {
+  color: white;
+  background-color: transparent;
+  padding: 5px;
+  outline: none;
+  border: none;
+  transition: all .5s ease;
+  border-radius: 10px;
+  font-size: 2.5em;
+  opacity: .75;
+  font-weight: bold;
+  margin: 1.5em;
+}
+
+.back-to-main:hover {
+  opacity: 1;
+  background-color: rgba(10,17,32,0.8);
 }
