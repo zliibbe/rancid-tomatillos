@@ -29,7 +29,7 @@ componentDidMount = () => {
 
             <div className='poster-rating-container'>
               <img className='poster-img' src={this.state.movieDetails.poster_path} alt="Movie poster" />
-              <p className='avg-rating'>Rating: {Math.round(this.state.movieDetails.average_rating * 10) /10} / 10</p>
+              <p className='avg-rating'>Rating: {Math.round(this.state.movieDetails.average_rating * 10)/10} / 10</p>
             </div>
 
             <div className='title-description-container'>
@@ -41,7 +41,7 @@ componentDidMount = () => {
                 <p>⎮</p>
                 <p>{this.state.movieDetails.genres}</p>
                 <p>⎮</p>
-                {!this.state.movieDetails.runtime && <p>-</p>}
+                {!this.state.movieDetails.runtime && <p>No runtime available</p>}
                 {this.state.movieDetails.runtime != 0 && <p>{this.state.movieDetails.runtime} minutes</p>}
               </div>
               <div className='budget-revenue'>
@@ -54,7 +54,7 @@ componentDidMount = () => {
   
         </div>
         <div className='back-to-main-container'>
-          <button className='back-to-main' onClick={() => this.state.displayMainDashboard()}>X</button>
+          <button className='back-to-main' type='button' onClick={() => this.state.displayMainDashboard()}>X</button>
         </div>
       </main>
     )
