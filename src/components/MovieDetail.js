@@ -34,6 +34,7 @@ componentDidMount = () => {
 
             <div className='title-description-container'>
               <h1 className='movie-title'>{this.state.movieDetails.title}</h1>
+              {!this.state.movieDetails.overview && <p className='movie-overview'>No Description Available</p>}
               <p className='movie-overview'>{this.state.movieDetails.overview}</p>
               <div className='genre-section'>
                 <p className='release-date'>{this.state.movieDetails.release_date}</p>
