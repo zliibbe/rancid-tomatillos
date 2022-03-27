@@ -7,7 +7,7 @@ h1 {
 }
 .poster-img,
 .backdrop-img {
-  height: 400px;
+  height: 40px;
   width: 300px;
 }
 
@@ -101,5 +101,5 @@ h1 {
 
 .back-to-main:hover {
   opacity: 1;
-  background-color: rgba(10,17,32,0.8);
+  background-color: rgba(10,17,32,0.6);
 }
