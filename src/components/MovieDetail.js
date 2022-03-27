@@ -12,7 +12,7 @@ class MovieDetail extends React.Component {
   }
 
   formatCurrency = (cost) => {
-    const formatter = new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'})
+    const formatter = new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0})
     return formatter.format(cost)
   }
 
@@ -44,11 +44,9 @@ class MovieDetail extends React.Component {
               <div className='genre-section'>
                 <p className='release-date'>{this.state.movieDetails.release_date}</p>
                 <p>⎮</p>
-                <p>{this.state.movieDetails.genres}</p>
+                <p>{[this.state.movieDetails.genres].join(' , ')}</p>
                 <p>⎮</p>
                 { this.state.movieDetails.runtime ? <p>{this.state.movieDetails.runtime} minutes</p> : <p>No runtime available</p> }
-                {/* {!this.state.movieDetails.runtime && <p>No runtime available</p>}
-                {this.state.movieDetails.runtime != 0 && <p>{this.state.movieDetails.runtime} minutes</p>} */}
               </div>
               <div className='budget-revenue'>
                 {this.state.movieDetails.budget != 0 && <p className='budget'>Budget: {this.formatCurrency(this.state.movieDetails.budget)}</p>}
