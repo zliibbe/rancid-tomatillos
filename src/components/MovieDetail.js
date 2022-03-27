@@ -1,5 +1,6 @@
 import React from 'react';
-import '../styles/MovieDetail.css'
+import '../styles/MovieDetail.css';
+import { fetchSingleMovie } from '../apiCalls';
 
 class MovieDetail extends React.Component {
   constructor( { movieDetails, displayMainDashboard }) {
@@ -10,6 +11,15 @@ class MovieDetail extends React.Component {
     }
   }
 
+componentDidMount = () => {
+  fetchSingleMovie(this.state.movieDetails.id)
+  .then(data => { 
+    this.setState({
+        movieDetails: data.movie
+    })
+  })
+}
+
   render() {
     return (
       <main className='single-movie-section' style={{backgroundImage: `url(${this.state.movieDetails.backdrop_path})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}}>
@@ -19,18 +29,24 @@ class MovieDetail extends React.Component {
 
             <div className='poster-rating-container'>
               <img className='poster-img' src={this.state.movieDetails.poster_path} alt="Movie poster" />
-              <p className='avg-rating'>{this.state.movieDetails.average_rating}</p>
+              <p className='avg-rating'>Rating: {Math.round(this.state.movieDetails.average_rating * 10)/10} / 10</p>
             </div>
 
             <div className='title-description-container'>
               <h1 className='movie-title'>{this.state.movieDetails.title}</h1>
-              <p className='movie-overview'>New Seasons organic dog parks stumptown gluten free mustachioed bartenders microbrew freegans breweries Alberta Arts local honey gentrification stumptown pearl district outdoorsy. Kristian Foden-Vencil beard 82nd Avenue of Roses Silicon Forest clouds stripclubs vibrant Impossible Burger faux bacon Plaid Pantry farm to table it's raining again Voodoo Donuts food carts Cascadia a dog gym. </p>
+              {!this.state.movieDetails.overview && <p className='movie-overview'>No Description Available</p>}
+              <p className='movie-overview'>{this.state.movieDetails.overview}</p>
               <div className='genre-section'>
                 <p className='release-date'>{this.state.movieDetails.release_date}</p>
                 <p>⎮</p>
-                <p>Genre goes here</p>
+                <p>{this.state.movieDetails.genres}</p>
                 <p>⎮</p>
-                <p>2h 23m runtime</p>
+                {!this.state.movieDetails.runtime && <p>No runtime available</p>}
+                {this.state.movieDetails.runtime != 0 && <p>{this.state.movieDetails.runtime} minutes</p>}
+              </div>
+              <div className='budget-revenue'>
+                {this.state.movieDetails.budget != 0 && <p className='budget'>Budget: {this.state.movieDetails.budget}</p>}
+                {this.state.movieDetails.revenue != 0 && <p className='revenue'>Revenue: {this.state.movieDetails.revenue}</p>}
               </div>
             </div>
           
@@ -38,7 +54,7 @@ class MovieDetail extends React.Component {
   
         </div>
         <div className='back-to-main-container'>
-          <button className='back-to-main' onClick={() => this.state.displayMainDashboard()}>X</button>
+          <button className='back-to-main' type='button' onClick={() => this.state.displayMainDashboard()}>X</button>
         </div>
       </main>
     )
