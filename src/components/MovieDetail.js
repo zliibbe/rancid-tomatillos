@@ -43,9 +43,8 @@ componentDidMount = () => {
                 <p>{this.state.movieDetails.runtime} minutes</p>
               </div>
               <div className='budget-revenue'>
-                <p className='budget'>Budget: {this.state.movieDetails.budget}</p>
-                <p className='revenue'>Revenue: {this.state.movieDetails.revenue}</p>
-
+                {this.state.movieDetails.budget != 0 && <p className='budget'>Budget: {this.state.movieDetails.budget}</p>}
+                {this.state.movieDetails.revenue != 0 && <p className='revenue'>Revenue: {this.state.movieDetails.revenue}</p>}
               </div>
             </div>
           
