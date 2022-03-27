@@ -12,15 +12,21 @@ class MovieDetail extends React.Component {
     }
   }
 
-componentDidMount = () => {
-  fetchSingleMovie(this.state.movieDetails.id)
-  .then(data => { 
-    this.setState({
+  formatCurrency = (cost) => {
+    const formatter = new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0})
+    return formatter.format(cost)
+  }
+  
+  componentDidMount = () => {
+    fetchSingleMovie(this.state.movieDetails.id)
+    .then(data => { 
+      this.setState({
         movieDetails: data.movie
-    })
-  })
-}
 
+      })
+    })
+  }
+  
   render() {
     return (
       <main className='single-movie-section' style={{backgroundImage: `url(${this.state.movieDetails.backdrop_path})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}}>
@@ -40,10 +46,9 @@ componentDidMount = () => {
               <div className='movie-details-section'>
                 <p className='release-date'><i>Released:</i> <DayJS format="MMMM DD, YYYY">{this.state.movieDetails.release_date}</DayJS></p>
                 <p>{this.state.movieDetails.genres}</p>
-                {!this.state.movieDetails.runtime && <p className='runtime'>No runtime available</p>}
-                {this.state.movieDetails.runtime != 0 && <p className='runtime'><i>Runtime: </i> {this.state.movieDetails.runtime} minutes</p>}
-                {this.state.movieDetails.budget != 0 && <p className='budget'><i>Budget: </i>{this.state.movieDetails.budget}</p>}
-                {this.state.movieDetails.revenue != 0 && <p className='revenue'><i>Revenue:</i> {this.state.movieDetails.revenue}</p>}
+                { this.state.movieDetails.runtime ? <p>{this.state.movieDetails.runtime} minutes</p> : <p>No runtime available</p> }
+                {this.state.movieDetails.budget != 0 && <p className='budget'>Budget: {this.formatCurrency(this.state.movieDetails.budget)}</p>}
+                {this.state.movieDetails.revenue != 0 && <p className='revenue'>Revenue: {this.formatCurrency(this.state.movieDetails.revenue)}</p>}
               </div>
             </div>
           

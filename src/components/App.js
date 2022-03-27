@@ -24,9 +24,7 @@ class App extends React.Component {
   }
 
   errorHandling = () => {
-    this.setState = {
-      error: true
-    }
+    this.setState({error: true})
   }
   
   sortByTitle = (movies) => {
