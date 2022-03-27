@@ -11,14 +11,19 @@ class MovieDetail extends React.Component {
     }
   }
 
-componentDidMount = () => {
-  fetchSingleMovie(this.state.movieDetails.id)
-  .then(data => { 
-    this.setState({
-        movieDetails: data.movie
+  formatCurrency = (cost) => {
+    const formatter = new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'})
+    return formatter.format(cost)
+  }
+
+  componentDidMount = () => {
+    fetchSingleMovie(this.state.movieDetails.id)
+    .then(data => { 
+      this.setState({
+          movieDetails: data.movie
+      })
     })
-  })
-}
+  }
 
   render() {
     return (
@@ -45,8 +50,8 @@ componentDidMount = () => {
                 {this.state.movieDetails.runtime != 0 && <p>{this.state.movieDetails.runtime} minutes</p>}
               </div>
               <div className='budget-revenue'>
-                {this.state.movieDetails.budget != 0 && <p className='budget'>Budget: {this.state.movieDetails.budget}</p>}
-                {this.state.movieDetails.revenue != 0 && <p className='revenue'>Revenue: {this.state.movieDetails.revenue}</p>}
+                {this.state.movieDetails.budget != 0 && <p className='budget'>Budget: {this.formatCurrency(this.state.movieDetails.budget)}</p>}
+                {this.state.movieDetails.revenue != 0 && <p className='revenue'>Revenue: {this.formatCurrency(this.state.movieDetails.revenue)}</p>}
               </div>
             </div>
           
