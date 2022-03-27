@@ -1,5 +1,4 @@
 import '../App.css';
-import movieData from '../movieData';
 import React from 'react';
 import MoviesContainer from './MoviesContainer'
 import MovieDetail from './MovieDetail';
