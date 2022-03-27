@@ -41,7 +41,8 @@ componentDidMount = () => {
                 <p>⎮</p>
                 <p>{this.state.movieDetails.genres}</p>
                 <p>⎮</p>
-                <p>{this.state.movieDetails.runtime} minutes</p>
+                {!this.state.movieDetails.runtime && <p>-</p>}
+                {this.state.movieDetails.runtime != 0 && <p>{this.state.movieDetails.runtime} minutes</p>}
               </div>
               <div className='budget-revenue'>
                 {this.state.movieDetails.budget != 0 && <p className='budget'>Budget: {this.state.movieDetails.budget}</p>}
