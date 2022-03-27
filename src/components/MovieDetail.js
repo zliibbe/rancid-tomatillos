@@ -29,7 +29,7 @@ componentDidMount = () => {
 
             <div className='poster-rating-container'>
               <img className='poster-img' src={this.state.movieDetails.poster_path} alt="Movie poster" />
-              <p className='avg-rating'>{this.state.movieDetails.average_rating}</p>
+              <p className='avg-rating'>Rating: {Math.round(this.state.movieDetails.average_rating * 10) /10} / 10</p>
             </div>
 
             <div className='title-description-container'>
