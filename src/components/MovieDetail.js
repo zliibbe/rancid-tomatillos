@@ -2,6 +2,7 @@ import React from 'react';
 import '../styles/MovieDetail.css';
 import { fetchSingleMovie } from '../apiCalls';
 import DayJS from 'react-dayjs';
+import { Link } from 'react-router-dom';
 
 class MovieDetail extends React.Component {
   constructor( { movieDetails, displayMainDashboard }) {
@@ -56,12 +57,17 @@ class MovieDetail extends React.Component {
   
         </div>
         <div className='back-to-main-container'>
-          <button className='back-to-main' type='button' onClick={() => this.state.displayMainDashboard()}>X</button>
+          <Link to='/'>
+            <button className='back-to-main' type='button'>X</button>
+          </Link>
         </div>
       </main>
     )
   }
 }
+
+
+// onClick={() => this.state.displayMainDashboard()
 
 
 
