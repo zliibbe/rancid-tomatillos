@@ -3,7 +3,7 @@ import React from 'react';
 import MoviesContainer from './MoviesContainer'
 import MovieDetail from './MovieDetail';
 import { fetchAllMovies } from '../apiCalls';
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 
 class App extends React.Component {
   constructor () {
@@ -14,6 +14,8 @@ class App extends React.Component {
       error: null,
     };
   }
+
+
 
   displaySingleMovie = (id) => {
     let foundMovie = this.state.movieData.find(movie => movie.id === id);
@@ -54,23 +56,26 @@ class App extends React.Component {
     })
   }
 
-  render () {
+  render() {
     return (
       <main className="App">
-        {!this.state.currentMovie && <nav className="header">
-          <h1>Rancid Tomatillos</h1>
-        </nav>}
+        <Link to="/">
+          <nav className="header">
+            <h1>Rancid Tomatillos</h1>
+          </nav>
+        </Link>
         {this.state.error && <h2 className="error-msg">Error loading movies</h2>}
-        <Route exact path='/' render={() => <MoviesContainer  movieData={this.state.movieData} displaySingleMovie={this.displaySingleMovie}/>}/>
-        <Route exact path={`/${this.state.currentMovie.id}`} render={() => <MovieDetail movieDetails={this.state.currentMovie} displayMainDashboard={this.displayMainDashboard}/>}/>
-        {/* {this.state.currentMovie && <MovieDetail movieDetails={this.state.currentMovie} displayMainDashboard={this.displayMainDashboard}/>} */}
+        <Route exact path='/' render={() => <MoviesContainer movieData={this.state.movieData} displaySingleMovie={this.displaySingleMovie}/>}/>
+        <Route exact path={`/${this.state.currentMovie.id}`} render={() => <MovieDetail movieDetails={this.state.currentMovie} displayMainDashboard={this.displayMainDashboard}/>}/>             
       </main>
-    );
+    )
   }
-
 }
 
 
+
+// {!this.state.currentMovie &&  
+{/* {this.state.currentMovie && <MovieDetail movieDetails={this.state.currentMovie} displayMainDashboard={this.displayMainDashboard}/>} */}
 // {!this.state.currentMovie && <MoviesContainer  movieData={this.state.movieData} displaySingleMovie={this.displaySingleMovie}/>}
 
 

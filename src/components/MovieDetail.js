@@ -23,7 +23,6 @@ class MovieDetail extends React.Component {
     .then(data => { 
       this.setState({
         movieDetails: data.movie
-
       })
     })
   }
