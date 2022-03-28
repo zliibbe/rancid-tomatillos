@@ -3,13 +3,14 @@ import React from 'react';
 import MoviesContainer from './MoviesContainer'
 import MovieDetail from './MovieDetail';
 import { fetchAllMovies } from '../apiCalls';
+import { Route } from 'react-router-dom';
 
 class App extends React.Component {
   constructor () {
     super();
     this.state = { 
       movieData: [],
-      currentMovie: null,
+      currentMovie: {},
       error: null,
     };
   }
@@ -19,9 +20,9 @@ class App extends React.Component {
     this.setState({currentMovie: foundMovie})
   }
 
-  displayMainDashboard = () => {
-    this.setState({currentMovie: null})
-  }
+  // displayMainDashboard = () => {
+  //   this.setState({currentMovie: {}})
+  // }
 
   errorHandling = () => {
     this.setState({error: true})
@@ -60,12 +61,17 @@ class App extends React.Component {
           <h1>Rancid Tomatillos</h1>
         </nav>}
         {this.state.error && <h2 className="error-msg">Error loading movies</h2>}
-        {!this.state.currentMovie && <MoviesContainer  movieData={this.state.movieData} displaySingleMovie={this.displaySingleMovie}/>}
-        {this.state.currentMovie && <MovieDetail movieDetails={this.state.currentMovie} displayMainDashboard={this.displayMainDashboard}/>}
+        <Route exact path='/' render={() => <MoviesContainer  movieData={this.state.movieData} displaySingleMovie={this.displaySingleMovie}/>}/>
+        <Route exact path={`/${this.state.currentMovie.id}`} render={() => <MovieDetail movieDetails={this.state.currentMovie} displayMainDashboard={this.displayMainDashboard}/>}/>
+        {/* {this.state.currentMovie && <MovieDetail movieDetails={this.state.currentMovie} displayMainDashboard={this.displayMainDashboard}/>} */}
       </main>
     );
   }
 
 }
+
+
+// {!this.state.currentMovie && <MoviesContainer  movieData={this.state.movieData} displaySingleMovie={this.displaySingleMovie}/>}
+
 
 export default App;
