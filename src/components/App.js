@@ -62,16 +62,12 @@ class App extends React.Component {
         }}/>
 
         <Route exact path='/:id' render={({ match }) => {
-          const movieToRender = this.state.movieData.find(movie => movie.id === parseInt(match.params.id));
-          return <MovieDetail movieDetails={movieToRender}/>
-
-        }}/>          
+          return <MovieDetail movieID={parseInt(match.params.id)}/>
+        }}/>         
       
       </main>
     )
   }
 }
-
-
 
 export default App;
