@@ -57,12 +57,8 @@ class App extends React.Component {
   render() {
     return (
       <main className="App">
-        <Link to="/" style={{ textDecoration: 'none' }}>
-          <nav className="header">
-            <h1>Rancid Tomatillos</h1>
-          </nav>
-        </Link>
         {this.state.error && <h2 className="error-msg">Error loading movies</h2>}
+        <Route exact path='/' render={() => <nav className="header"><h1>Rancid Tomatillos</h1></nav>}/>
         <Route exact path='/' render={() => <MoviesContainer movieData={this.state.movieData} displaySingleMovie={this.displaySingleMovie}/>}/>
         <Route exact path={`/${this.state.currentMovie.id}`} render={() => <MovieDetail movieDetails={this.state.currentMovie} displayMainDashboard={this.displayMainDashboard}/>}/>             
       </main>
@@ -72,7 +68,6 @@ class App extends React.Component {
 
 
 
-// {!this.state.currentMovie &&  
 {/* {this.state.currentMovie && <MovieDetail movieDetails={this.state.currentMovie} displayMainDashboard={this.displayMainDashboard}/>} */}
 // {!this.state.currentMovie && <MoviesContainer  movieData={this.state.movieData} displaySingleMovie={this.displaySingleMovie}/>}
 
