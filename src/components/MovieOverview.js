@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/MovieOverview.css'
+import { Link } from 'react-router-dom';
 
 class MovieOverview extends React.Component {
     constructor ({ key, id, posterPath, title, displaySingleMovie}) {
@@ -14,12 +15,15 @@ class MovieOverview extends React.Component {
 
     render() {
         return (
-        <div className='movie-card' tabIndex='1' onClick={() => this.state.displaySingleMovie(this.state.id)}>
-            <img src={this.state.posterPath}/>
-            <h1 className='movie-title-poster'>{this.state.title}</h1>
+        <div className='movie-card' tabIndex='1'>
+            <Link to={`/${this.state.id}`} style={{ textDecoration: 'none' }}>
+                <img src={this.state.posterPath}/>
+                <h1 className='movie-title-poster'>{this.state.title}</h1>
+            </Link>
         </div>
         )
     }
 }
+
 
 export default MovieOverview;

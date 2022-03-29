@@ -3,24 +3,16 @@ import React from 'react';
 import MoviesContainer from './MoviesContainer'
 import MovieDetail from './MovieDetail';
 import { fetchAllMovies } from '../apiCalls';
+import { Route, Link } from 'react-router-dom';
 
 class App extends React.Component {
   constructor () {
     super();
     this.state = { 
       movieData: [],
-      currentMovie: null,
+      currentMovie: {},
       error: null,
     };
-  }
-
-  displaySingleMovie = (id) => {
-    let foundMovie = this.state.movieData.find(movie => movie.id === id);
-    this.setState({currentMovie: foundMovie})
-  }
-
-  displayMainDashboard = () => {
-    this.setState({currentMovie: null})
   }
 
   errorHandling = () => {
@@ -53,19 +45,33 @@ class App extends React.Component {
     })
   }
 
-  render () {
+
+
+  render() {
     return (
       <main className="App">
-        {!this.state.currentMovie && <nav className="header">
-          <h1>Rancid Tomatillos</h1>
-        </nav>}
         {this.state.error && <h2 className="error-msg">Error loading movies</h2>}
-        {!this.state.currentMovie && <MoviesContainer  movieData={this.state.movieData} displaySingleMovie={this.displaySingleMovie}/>}
-        {this.state.currentMovie && <MovieDetail movieDetails={this.state.currentMovie} displayMainDashboard={this.displayMainDashboard}/>}
-      </main>
-    );
-  }
+        
+        <Route exact path='/' render={() => {
+          return (
+            <React.Fragment>
+              <nav className="header"><h1>Rancid Tomatillos</h1></nav>
+              <MoviesContainer movieData={this.state.movieData} displaySingleMovie={this.displaySingleMovie}/>
+            </React.Fragment>
+          )
+        }}/>
 
+        <Route exact path='/:id' render={({ match }) => {
+          const movieToRender = this.state.movieData.find(movie => movie.id === parseInt(match.params.id));
+          return <MovieDetail movieDetails={movieToRender}/>
+
+        }}/>          
+      
+      </main>
+    )
+  }
 }
+
+
 
 export default App;
