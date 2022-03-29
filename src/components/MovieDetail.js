@@ -16,6 +16,12 @@ class MovieDetail extends React.Component {
     const formatter = new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0})
     return formatter.format(cost)
   }
+
+  formatGenres = (genres) => {
+    console.log(genres, "in format")
+    let genreList = genres.reduce((list, genre) => list += `${genre}, `, '')
+    return genreList.slice(0, genreList.length - 2)
+  }
   
   componentDidMount = () => {
     fetchSingleMovie(this.state.movieDetails.id)
@@ -27,6 +33,7 @@ class MovieDetail extends React.Component {
   }
   
   render() {
+    console.log(this.state.movieDetails.genres, "in render top")
     return (
       <main className='single-movie-section' style={{backgroundImage: `url(${this.state.movieDetails.backdrop_path})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}}>
         <div className='single-movie-container'>
@@ -44,8 +51,8 @@ class MovieDetail extends React.Component {
               
               <div className='movie-details-section'>
                 <p className='release-date'><i>Released:</i> <DayJS format="MMMM DD, YYYY">{this.state.movieDetails.release_date}</DayJS></p>
-                <p>{this.state.movieDetails.genres}</p>
-                { this.state.movieDetails.runtime ? <p>{this.state.movieDetails.runtime} minutes</p> : <p>No runtime available</p> }
+                {this.state.movieDetails.genres && <p>{this.formatGenres(this.state.movieDetails.genres)}</p>}
+                {this.state.movieDetails.runtime ? <p>{this.state.movieDetails.runtime} minutes</p> : <p>No runtime available</p> }
                 {this.state.movieDetails.budget != 0 && <p className='budget'>Budget: {this.formatCurrency(this.state.movieDetails.budget)}</p>}
                 {this.state.movieDetails.revenue != 0 && <p className='revenue'>Revenue: {this.formatCurrency(this.state.movieDetails.revenue)}</p>}
               </div>
