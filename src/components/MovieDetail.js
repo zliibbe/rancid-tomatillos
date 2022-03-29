@@ -5,11 +5,10 @@ import DayJS from 'react-dayjs';
 import { Link } from 'react-router-dom';
 
 class MovieDetail extends React.Component {
-  constructor( { movieDetails, displayMainDashboard }) {
+  constructor( { movieDetails }) {
     super();
     this.state = {
       movieDetails: movieDetails,
-      displayMainDashboard: displayMainDashboard
     }
   }
 
@@ -63,10 +62,10 @@ class MovieDetail extends React.Component {
       </main>
     )
   }
+
 }
 
 
-// onClick={() => this.state.displayMainDashboard()
 
 
 
