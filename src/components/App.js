@@ -15,15 +15,6 @@ class App extends React.Component {
     };
   }
 
-  displaySingleMovie = (id) => {
-    let foundMovie = this.state.movieData.find(movie => movie.id === id);
-    this.setState({currentMovie: foundMovie})
-  }
-
-  // displayMainDashboard = () => {
-  //   this.setState({currentMovie: {}})
-  // }
-
   errorHandling = () => {
     this.setState({error: true})
   }
@@ -54,22 +45,33 @@ class App extends React.Component {
     })
   }
 
+
+
   render() {
     return (
       <main className="App">
         {this.state.error && <h2 className="error-msg">Error loading movies</h2>}
-        <Route exact path='/' render={() => <nav className="header"><h1>Rancid Tomatillos</h1></nav>}/>
-        <Route exact path='/' render={() => <MoviesContainer movieData={this.state.movieData} displaySingleMovie={this.displaySingleMovie}/>}/>
-        <Route exact path={`/${this.state.currentMovie.id}`} render={() => <MovieDetail movieDetails={this.state.currentMovie} displayMainDashboard={this.displayMainDashboard}/>}/>             
+        
+        <Route exact path='/' render={() => {
+          return (
+            <React.Fragment>
+              <nav className="header"><h1>Rancid Tomatillos</h1></nav>
+              <MoviesContainer movieData={this.state.movieData} displaySingleMovie={this.displaySingleMovie}/>
+            </React.Fragment>
+          )
+        }}/>
+
+        <Route exact path='/:id' render={({ match }) => {
+          const movieToRender = this.state.movieData.find(movie => movie.id === parseInt(match.params.id));
+          return <MovieDetail movieDetails={movieToRender}/>
+
+        }}/>          
+      
       </main>
     )
   }
 }
 
-
-
-{/* {this.state.currentMovie && <MovieDetail movieDetails={this.state.currentMovie} displayMainDashboard={this.displayMainDashboard}/>} */}
-// {!this.state.currentMovie && <MoviesContainer  movieData={this.state.movieData} displaySingleMovie={this.displaySingleMovie}/>}
 
 
 export default App;
