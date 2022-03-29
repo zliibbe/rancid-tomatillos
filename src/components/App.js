@@ -15,8 +15,6 @@ class App extends React.Component {
     };
   }
 
-
-
   displaySingleMovie = (id) => {
     let foundMovie = this.state.movieData.find(movie => movie.id === id);
     this.setState({currentMovie: foundMovie})
@@ -59,7 +57,7 @@ class App extends React.Component {
   render() {
     return (
       <main className="App">
-        <Link to="/">
+        <Link to="/" style={{ textDecoration: 'none' }}>
           <nav className="header">
             <h1>Rancid Tomatillos</h1>
           </nav>

@@ -56,7 +56,7 @@ class MovieDetail extends React.Component {
   
         </div>
         <div className='back-to-main-container'>
-          <Link to='/'>
+          <Link to='/' style={{ textDecoration: 'none' }}>
             <button className='back-to-main' type='button'>X</button>
           </Link>
         </div>
