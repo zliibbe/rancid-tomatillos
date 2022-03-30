@@ -19,7 +19,6 @@ class MovieDetail extends React.Component {
   }
 
   formatGenres = (genres) => {
-    console.log(genres, "in format")
     let genreList = genres.reduce((list, genre) => list += `${genre}, `, '')
     return genreList.slice(0, genreList.length - 2)
   }
