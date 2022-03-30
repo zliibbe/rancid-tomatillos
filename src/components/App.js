@@ -3,7 +3,8 @@ import React from 'react';
 import MoviesContainer from './MoviesContainer'
 import MovieDetail from './MovieDetail';
 import { fetchAllMovies } from '../apiCalls';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, Switch } from 'react-router-dom';
+import Error from './Error'
 
 class App extends React.Component {
   constructor () {
@@ -51,19 +52,23 @@ class App extends React.Component {
     return (
       <main className="App">
         {this.state.error && <h2 className="error-msg">Error loading movies</h2>}
-        
-        <Route exact path='/' render={() => {
-          return (
-            <React.Fragment>
-              <nav className="header"><h1>Rancid Tomatillos</h1></nav>
-              <MoviesContainer movieData={this.state.movieData} displaySingleMovie={this.displaySingleMovie}/>
-            </React.Fragment>
-          )
-        }}/>
+        <Switch>
+          <Route exact path='/' render={() => {
+            return (
+              <React.Fragment>
+                <nav className="header"><h1>Rancid Tomatillos</h1></nav>
+                <MoviesContainer movieData={this.state.movieData} displaySingleMovie={this.displaySingleMovie}/>
+              </React.Fragment>
+            )
+          }}/>
 
-        <Route exact path='/:id' render={({ match }) => {
-          return <MovieDetail movieID={parseInt(match.params.id)}/>
-        }}/>         
+          <Route exact path='/movies/:id' render={({ match }) => {
+            return <MovieDetail movieID={parseInt(match.params.id)}/>
+          }}/> 
+
+          <Route><Error/></Route>
+        </Switch>
+                
       
       </main>
     )
