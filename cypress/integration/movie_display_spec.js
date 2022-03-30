@@ -35,4 +35,14 @@ describe('Main movie view', () => {
         .should('include', '/528085')
     })
     
+    it('navigates to base URL when exiting single movie view', () => {
+        cy.visit('http://localhost:3000/')
+        .get('.movie-card')
+        .first()
+        .click()
+        cy.get('.back-to-main')
+        .click()
+        .url()
+        .should('include', '/')
+    })
   });
