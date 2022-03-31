@@ -12,12 +12,16 @@ class App extends React.Component {
     this.state = { 
       movieData: [],
       currentMovie: {},
-      error: null,
+      error: false,
     };
   }
 
   errorHandling = () => {
     this.setState({error: true})
+  }
+
+  resetError = () => {
+    this.setState({error: false})
   }
   
   sortByTitle = (movies) => {
@@ -51,19 +55,24 @@ class App extends React.Component {
   render() {
     return (
       <main className="App">
-        {this.state.error && <h2 className="error-msg">Error loading movies</h2>}
         <Switch>
           <Route exact path='/' render={() => {
             return (
               <React.Fragment>
                 <nav className="header"><h1>Rancid Tomatillos</h1></nav>
+                {this.state.error && <h1>{this.state.error}</h1>}
                 <MoviesContainer movieData={this.state.movieData} displaySingleMovie={this.displaySingleMovie}/>
               </React.Fragment>
             )
           }}/>
 
           <Route exact path='/movies/:id' render={({ match }) => {
-            return <MovieDetail movieID={parseInt(match.params.id)}/>
+            return (
+              <React.Fragment>
+                {this.state.error && <Error resetError={this.resetError}/>}
+                {!this.state.error && <MovieDetail movieID={parseInt(match.params.id)} errorHandling={this.errorHandling}/>}
+              </React.Fragment>
+            )
           }}/> 
 
           <Route><Error/></Route>
