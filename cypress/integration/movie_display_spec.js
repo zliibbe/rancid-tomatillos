@@ -21,7 +21,7 @@ describe('Main movie view', () => {
                 "release_date": "2020-09-02"
               }
         ]}
-      )
+      ).as('getMovies')
         cy.visit('http://localhost:3000/')
         .contains('Rancid Tomatillos')
         .get('.movie-card')
@@ -48,7 +48,7 @@ describe('Main movie view', () => {
                 "release_date": "2020-09-02"
               }
         ]
-      })
+      }).as('getMovies')
         cy.visit('http://localhost:3000/')
         .get('.movie-card')
         .first()
@@ -77,7 +77,7 @@ describe('Main movie view', () => {
                 "release_date": "2020-09-02"
               }
         ]
-      })
+      }).as('getMovies')
         cy.visit('http://localhost:3000/')
         .get('.movie-card')
         .first()
@@ -108,7 +108,7 @@ describe('Main movie view', () => {
                 "release_date": "2020-09-02"
               }
         ]
-      })
+      }).as('getMovies')
         cy.visit('http://localhost:3000/')
         .get('.movie-card')
         .first()
@@ -137,7 +137,7 @@ describe('Main movie view', () => {
                 "release_date": "2020-09-02"
               }
         ]
-      })
+      }).as('getMovies')
 
         cy.visit('http://localhost:3000/')
         .get('.movie-card')
@@ -170,5 +170,18 @@ describe('Main movie view', () => {
               }
         ]
       })
+    })
+
+    it('should display error message to user when there is a 422 error', () => {
+        cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies/', {
+            statusCode: 422
+        })
+    })
+
+    it('should display error message to user when server is down', () => {
+        cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies/', {
+            statusCode: 500
+        })
+        
     })
   });
