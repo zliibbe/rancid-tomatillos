@@ -60,8 +60,8 @@ class App extends React.Component {
             return (
               <React.Fragment>
                 <nav className="header"><h1>Rancid Tomatillos</h1></nav>
-                {this.state.error && <h1>{this.state.error}</h1>}
-                <MoviesContainer movieData={this.state.movieData} displaySingleMovie={this.displaySingleMovie}/>
+                {this.state.error && <Error resetError={this.resetError}/>}
+                {!this.state.error && <MoviesContainer movieData={this.state.movieData} displaySingleMovie={this.displaySingleMovie}/>}
               </React.Fragment>
             )
           }}/>
