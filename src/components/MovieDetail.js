@@ -3,13 +3,16 @@ import '../styles/MovieDetail.css';
 import { fetchSingleMovie } from '../apiCalls';
 import DayJS from 'react-dayjs';
 import { Link } from 'react-router-dom';
+import Error from './Error'
 
 class MovieDetail extends React.Component {
-  constructor( { movieID }) {
+  constructor( { movieID, errorHandling }) {
     super();
     this.state = {
       movieDetails: {},
       movieID: movieID,
+      error: null,
+      errorHandling: errorHandling
     }
   }
 
@@ -29,6 +32,10 @@ class MovieDetail extends React.Component {
       this.setState({
         movieDetails: data.movie
       })
+    })
+    .catch(error => {
+      this.state.errorHandling()
+      console.warn(error)
     })
   }
   
