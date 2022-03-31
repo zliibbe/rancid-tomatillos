@@ -149,39 +149,19 @@ describe('Main movie view', () => {
         .should('include', '/')
     })
 
-    it('', () => {
-        cy.intercept(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/`, {
-        "movies": [
-            {
-                "id": 528085,
-                "poster_path": "https://image.tmdb.org/t/p/original//7D430eqZj8y3oVkLFfsWXGRcpEG.jpg",
-                "backdrop_path": "https://image.tmdb.org/t/p/original//5UkzNSOK561c2QRy2Zr4AkADzLT.jpg",
-                "title": "2067",
-                "average_rating": 5.166666666666667,
-                "release_date": "2020-10-01"
-              },
-              {
-                "id": 613504,
-                "poster_path": "https://image.tmdb.org/t/p/original//kiX7UYfOpYrMFSAGbI6j1pFkLzQ.jpg",
-                "backdrop_path": "https://image.tmdb.org/t/p/original//r5srC0cqU36n38azFnCyReEksiR.jpg",
-                "title": "After We Collided",
-                "average_rating": 5.25,
-                "release_date": "2020-09-02"
-              }
-        ]
-      })
-    })
-
     it('should display error message to user when there is a 422 error', () => {
-        cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies/', {
+        cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
             statusCode: 422
-        })
+        }).as('422 error')
+        cy.visit('http://localhost:3000/')
+        .contains('Something went wrong')
     })
 
     it('should display error message to user when server is down', () => {
-        cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies/', {
+        cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
             statusCode: 500
-        })
-        
+        }).as('500 error')
+        cy.visit('http://localhost:3000/')
+        .contains('Something went wrong')
     })
   });
