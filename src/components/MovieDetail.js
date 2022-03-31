@@ -3,12 +3,16 @@ import '../styles/MovieDetail.css';
 import { fetchSingleMovie } from '../apiCalls';
 import DayJS from 'react-dayjs';
 import { Link } from 'react-router-dom';
+import Error from './Error'
 
 class MovieDetail extends React.Component {
-  constructor( { movieDetails }) {
+  constructor( { movieID, errorHandling }) {
     super();
     this.state = {
-      movieDetails: movieDetails,
+      movieDetails: {},
+      movieID: movieID,
+      error: null,
+      errorHandling: errorHandling
     }
   }
 
@@ -18,22 +22,24 @@ class MovieDetail extends React.Component {
   }
 
   formatGenres = (genres) => {
-    console.log(genres, "in format")
     let genreList = genres.reduce((list, genre) => list += `${genre}, `, '')
     return genreList.slice(0, genreList.length - 2)
   }
   
   componentDidMount = () => {
-    fetchSingleMovie(this.state.movieDetails.id)
+    fetchSingleMovie(this.state.movieID)
     .then(data => { 
       this.setState({
         movieDetails: data.movie
       })
     })
+    .catch(error => {
+      this.state.errorHandling()
+      console.warn(error)
+    })
   }
   
   render() {
-    console.log(this.state.movieDetails.genres, "in render top")
     return (
       <main className='single-movie-section' style={{backgroundImage: `url(${this.state.movieDetails.backdrop_path})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}}>
         <div className='single-movie-container'>
@@ -51,7 +57,7 @@ class MovieDetail extends React.Component {
               
               <div className='movie-details-section'>
                 <p className='release-date'><i>Released:</i> <DayJS format="MMMM DD, YYYY">{this.state.movieDetails.release_date}</DayJS></p>
-                {this.state.movieDetails.genres && <p>{this.formatGenres(this.state.movieDetails.genres)}</p>}
+                {this.state.movieDetails.genres && <p><i>Genres: </i>{this.formatGenres(this.state.movieDetails.genres)}</p>}
                 {this.state.movieDetails.runtime ? <p>{this.state.movieDetails.runtime} minutes</p> : <p>No runtime available</p> }
                 {this.state.movieDetails.budget != 0 && <p className='budget'>Budget: {this.formatCurrency(this.state.movieDetails.budget)}</p>}
                 {this.state.movieDetails.revenue != 0 && <p className='revenue'>Revenue: {this.formatCurrency(this.state.movieDetails.revenue)}</p>}

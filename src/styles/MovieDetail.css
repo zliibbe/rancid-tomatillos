@@ -7,8 +7,8 @@ h1 {
 }
 .poster-img,
 .backdrop-img {
-  /* height: 40px;
-  width: 300px; */
+  /* width: fit-content;
+  height: fit-content; */
   object-fit: cover;
 }
 .poster-img {
