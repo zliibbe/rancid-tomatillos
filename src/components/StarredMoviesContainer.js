@@ -13,14 +13,12 @@ class StarredMoviesContainer extends React.Component {
   }
 
   mapStarredMovies = () => {
-    this.state.starredMovies.map(movie => {
+    return this.state.starredMovies.map(movie => {
       return (
         <MovieOverview key={movie.id} id={movie.id} posterPath={movie.poster_path} title={movie.title} />
       )
     })
   }
-
-
 
   componentDidMount = () => {
     fetchStarredMovies()
@@ -37,10 +35,16 @@ class StarredMoviesContainer extends React.Component {
   render() {
     return (
       <main className='starred-movie-main'>
-        <h1>this is where starred movies will go!</h1>
-        <Link to='/'>
-        <button>Back to main</button>
-        </Link>
+        <nav className='starred-header'>
+          <h1>Your Starred Movies</h1>
+          <Link to='/'>
+            <button className='back-to-main' type='button'>X</button>
+          </Link>
+        </nav>
+        <section className='starred-movies-container'>
+          {this.mapStarredMovies()}
+        </section>
+        
       </main>
     )
   }
