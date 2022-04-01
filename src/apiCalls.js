@@ -20,4 +20,15 @@ const fetchAllMovies = (path) => {
     })
 }
 
-export { fetchAllMovies, fetchSingleMovie }
+const fetchStarredMovies = () => {
+  return fetch('http://localhost:3001/api/v1/starredMovies')
+    .then(response => {
+      if(!response.ok) {
+        throw new Error ('Error with requesting movies.');
+      } else {
+        return response.json();
+      }
+    })
+}
+
+export { fetchAllMovies, fetchSingleMovie, fetchStarredMovies }
