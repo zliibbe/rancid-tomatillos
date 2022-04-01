@@ -44,7 +44,6 @@ class StarredMoviesContainer extends React.Component {
         <section className='starred-movies-container'>
           {this.mapStarredMovies()}
         </section>
-        
       </main>
     )
   }

@@ -83,7 +83,9 @@ class App extends React.Component {
 
           <Route
             exact path='/movies/starred'
-            render={() => <StarredMoviesContainer sortByTitle={this.sortByTitle}/> }
+            render={() => <StarredMoviesContainer 
+            sortByTitle={this.sortByTitle} 
+            errorHandling={this.errorHandling}/> }
           />
 
           <Route
