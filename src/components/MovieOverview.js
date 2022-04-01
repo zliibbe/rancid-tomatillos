@@ -17,7 +17,7 @@ class MovieOverview extends React.Component {
         return (
         <div className='movie-card' tabIndex='1'>
             <Link to={`/movies/${this.state.id}`} style={{ textDecoration: 'none' }}>
-                <img src={this.state.posterPath}/>
+                <img className='movie-card-poster' src={this.state.posterPath}/>
                 <h1 className='movie-title-poster'>{this.state.title}</h1>
             </Link>
         </div>

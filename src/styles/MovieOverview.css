@@ -1,4 +1,15 @@
 .movie-title-poster {
     font-size: 1.7em;
     text-align: center;
+    border-radius: 2px;
+    box-shadow:
+      0 1px 1px hsl(236, 45%, 6%),
+      0 2px 2px hsl(236, 45%, 6%),
+      0 4px 4px hsl(236, 45%, 6%),
+      0 8px 8px hsl(236, 45%, 6%),
+      0 16px 16px hsl(236, 45%, 6%);
+}
+
+.movie-card-poster {
+    border-radius: 2px;
 }

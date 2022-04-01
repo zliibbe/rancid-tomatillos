@@ -49,6 +49,7 @@ h1 {
   display: flex;
   flex-direction: column;
   align-content: space-between;
+  margin-left: 1.5em;
 }
 
 .movie-title {
@@ -63,11 +64,19 @@ h1 {
 
 .poster-img {
   height: 90%;
-  border: 1px solid white;
+  border-radius: 2px;
+  box-shadow:
+      0 1px 1px hsl(236, 45%, 6%),
+      0 2px 2px hsl(236, 45%, 6%),
+      0 4px 4px hsl(236, 45%, 6%),
+      0 8px 8px hsl(236, 45%, 6%),
+      0 16px 16px hsl(236, 45%, 6%);
+  /* border: 1px solid white; */
 }
 
 .avg-rating {
-  margin-left: 22.5%;
+  margin-left: 8em;
+  margin-top: 1em;
 }
 
 .movie-details-section {
@@ -105,9 +114,15 @@ h1 {
   opacity: .75;
   font-weight: bold;
   margin: 1.5em;
+  cursor: pointer;
+  width: 20%;
 }
 
 .back-to-main:hover {
   opacity: 1;
   background-color: rgba(10,17,32,0.6);
+}
+
+.back-to-main-container {
+  width: 20%;
 }
