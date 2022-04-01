@@ -12,6 +12,10 @@ class StarredMoviesContainer extends React.Component {
     }
   }
 
+  checkIfStarred = () => {
+    
+  }
+
   mapStarredMovies = () => {
     return this.state.starredMovies.map(movie => {
       return (
