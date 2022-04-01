@@ -3,13 +3,12 @@ import '../styles/MovieOverview.css'
 import { Link } from 'react-router-dom';
 
 class MovieOverview extends React.Component {
-    constructor ({ key, id, posterPath, title, displaySingleMovie}) {
+    constructor ({ key, id, posterPath, title }) {
         super();
         this.state = {
             id: id,
             title: title,
-            posterPath: posterPath,
-            displaySingleMovie: displaySingleMovie
+            posterPath: posterPath
         }
     }
 
