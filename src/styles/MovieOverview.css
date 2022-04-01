@@ -1,3 +1,19 @@
+.movie-card {
+    opacity: .70;
+  }
+  
+  .movie-card:hover {
+    transform: scale(1.02);
+    opacity: 1;
+    transition: opacity .1s ease-in;
+  }
+  
+  .movie-card:focus-visible {
+    transform: scale(1.02);
+    opacity: 1;
+    transition: opacity .01s ease-in;
+  }
+
 .movie-title-poster {
     font-size: 1.7em;
     text-align: center;
