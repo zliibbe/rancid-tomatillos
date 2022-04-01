@@ -54,6 +54,8 @@ class App extends React.Component {
   render() {
     return (
       <main className="App">
+
+
         <Switch>
           <Route
             exact
@@ -63,6 +65,9 @@ class App extends React.Component {
                 <React.Fragment>
                   <nav className="header">
                     <h1>Rancid Tomatillos</h1>
+                    <Link to='/movies/starred'>
+                      <button>Starred Movies</button>
+                    </Link>
                   </nav>
                   {this.state.error && <Error resetError={this.resetError} />}
                   {!this.state.error && (
@@ -74,6 +79,11 @@ class App extends React.Component {
                 </React.Fragment>
               );
             }}
+          />
+
+          <Route
+            exact path='/movies/starred'
+            component={ StarredMoviesContainer }
           />
 
           <Route
@@ -97,6 +107,7 @@ class App extends React.Component {
           <Route>
             <Error />
           </Route>
+
         </Switch>
       </main>
     );
