@@ -83,7 +83,7 @@ class App extends React.Component {
 
           <Route
             exact path='/movies/starred'
-            component={ StarredMoviesContainer }
+            render={() => <StarredMoviesContainer sortByTitle={this.sortByTitle}/> }
           />
 
           <Route
