@@ -2,6 +2,7 @@ import "../App.css";
 import React from "react";
 import MoviesContainer from "./MoviesContainer";
 import MovieDetail from "./MovieDetail";
+import StarredMoviesContainer from './StarredMoviesContainer';
 import { fetchAllMovies } from "../apiCalls";
 import { Route, Link, Switch } from "react-router-dom";
 import Error from "./Error";
