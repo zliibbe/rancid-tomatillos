@@ -4,6 +4,7 @@ import { fetchSingleMovie } from '../apiCalls';
 import DayJS from 'react-dayjs';
 import { Link } from 'react-router-dom';
 import Error from './Error'
+import { postStarredMovie } from '../apiCalls';
 
 class MovieDetail extends React.Component {
   constructor( { movieID, errorHandling }) {
@@ -24,6 +25,19 @@ class MovieDetail extends React.Component {
   formatGenres = (genres) => {
     let genreList = genres.reduce((list, genre) => list += `${genre}, `, '')
     return genreList.slice(0, genreList.length - 2)
+  }
+
+  postNewFavorite = () => {
+    const movieToStar = {
+      id: this.state.movieID,
+      title: this.state.movieDetails.title,
+      poster_path: this.state.movieDetails.poster_path
+    }
+    postStarredMovie(movieToStar)
+      // .catch(error => {
+      //   this.state.errorHandling()
+      //   console.warn(error)
+      // })
   }
   
   componentDidMount = () => {
@@ -48,7 +62,11 @@ class MovieDetail extends React.Component {
 
             <div className='poster-rating-container'>
               <img className='poster-img' src={this.state.movieDetails.poster_path} alt="Movie poster" />
-              <p className='avg-rating'><i>Rating: </i>{Math.round(this.state.movieDetails.average_rating * 10)/10} / 10</p>
+              <div className='rating-star-container'>
+                <p className='avg-rating'><i>Rating: </i>{Math.round(this.state.movieDetails.average_rating * 10)/10} / 10</p>
+                <button className='star-movie-btn' type='button' onClick={() => this.postNewFavorite()}>Star Movie</button>
+                
+              </div>
             </div>
             
             <div className='title-description-container'>
