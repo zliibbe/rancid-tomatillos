@@ -31,4 +31,19 @@ const fetchStarredMovies = () => {
     })
 }
 
-export { fetchAllMovies, fetchSingleMovie, fetchStarredMovies }
+const postStarredMovie = (movieToStar) => {
+  fetch('http://localhost:3001/api/v1/starredMovies', {
+    method: 'POST',
+    body: JSON.stringify(movieToStar),
+    headers: {'Content-Type': 'application/json'}
+  })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error ('Error with requesting movies.');
+        } else {
+          return response.json()
+        }
+      })
+}
+
+export { fetchAllMovies, fetchSingleMovie, fetchStarredMovies, postStarredMovie }
