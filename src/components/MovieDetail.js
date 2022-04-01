@@ -65,7 +65,7 @@ class MovieDetail extends React.Component {
               <div className='rating-star-container'>
                 <p className='avg-rating'><i>Rating: </i>{Math.round(this.state.movieDetails.average_rating * 10)/10} / 10</p>
                 <button className='star-movie-btn' type='button' onClick={() => this.postNewFavorite()}>Star Movie</button>
-                
+
               </div>
             </div>
             
