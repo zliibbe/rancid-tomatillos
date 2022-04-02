@@ -34,10 +34,6 @@ class MovieDetail extends React.Component {
       poster_path: this.state.movieDetails.poster_path
     }
     postStarredMovie(movieToStar)
-      // .catch(error => {
-      //   this.state.errorHandling()
-      //   console.warn(error)
-      // })
   }
   
   componentDidMount = () => {
