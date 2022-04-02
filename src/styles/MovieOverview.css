@@ -1,31 +1,29 @@
 .movie-card {
     opacity: .70;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5)
   }
   
-  .movie-card:hover {
-    transform: scale(1.02);
+  .movie-card:hover, 
+  .movie-card:focus-visible {
+    transform: scale(1.03);
     opacity: 1;
-    transition: opacity .1s ease-in;
+    transition: opacity .01s ease-in, box-shadow 300ms;
+    box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5)
   }
   
   .movie-card:focus-visible {
-    transform: scale(1.02);
-    opacity: 1;
-    transition: opacity .01s ease-in;
+    box-shadow: 0 0 0 3px #131735,
+                0 0 0 6px #fff; 
+    border-radius: 10px;   
+    outline: none;
   }
 
 .movie-title-poster {
     font-size: 1.7em;
     text-align: center;
-    border-radius: 2px;
-    box-shadow:
-      0 1px 1px hsl(236, 45%, 6%),
-      0 2px 2px hsl(236, 45%, 6%),
-      0 4px 4px hsl(236, 45%, 6%),
-      0 8px 8px hsl(236, 45%, 6%),
-      0 16px 16px hsl(236, 45%, 6%);
+    border-radius: 10px;
 }
 
 .movie-card-poster {
-    border-radius: 2px;
+    border-radius: 10px 10px 0 0;
 }
