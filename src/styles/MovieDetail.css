@@ -64,19 +64,39 @@ h1 {
 
 .poster-img {
   height: 90%;
-  border-radius: 5px;
+  border-radius: 10px;
   box-shadow:
       0 1px 1px hsl(236, 45%, 6%),
       0 2px 2px hsl(236, 45%, 6%),
       0 4px 4px hsl(236, 45%, 6%),
       0 8px 8px hsl(236, 45%, 6%),
       0 16px 16px hsl(236, 45%, 6%);
-  /* border: 1px solid white; */
+}
+
+.rating-star-container {
+  display: flex;
+  justify-content: space-around;
 }
 
 .avg-rating {
-  margin-left: 8em;
+  margin-left: 1em;
   margin-top: 1em;
+}
+
+.star-movie-btn {
+  background-color: rgba(10,17,32,0.6);
+  color: rgba(196, 196, 196, .8);
+  min-width: 3em;
+  border-radius: 50%;
+  margin-top: 1em;
+  margin-right: 2em;
+  font-size: clamp(.5rem, 1rem, 2rem);
+  outline: none;
+}
+
+.star-movie-btn:hover {
+  margin-top: 1em;
+  /* outline:  */
 }
 
 .movie-details-section {
