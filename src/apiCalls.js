@@ -37,13 +37,15 @@ const postStarredMovie = (movieToStar) => {
     body: JSON.stringify(movieToStar),
     headers: {'Content-Type': 'application/json'}
   })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error ('Error with requesting movies.');
-        } else {
-          return response.json()
-        }
-      })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error ('This movie has already been favorited or is missing a parameter');
+      } else {
+        return response.json()
+      }
+    })
 }
+
+
 
 export { fetchAllMovies, fetchSingleMovie, fetchStarredMovies, postStarredMovie }
