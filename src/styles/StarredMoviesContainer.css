@@ -28,3 +28,25 @@
   width: 70vw;
   object-fit: cover;
 } 
+
+.back-to-main-starred {
+    color: white;
+    background-color: transparent;
+    padding: 5px;
+    outline: none;
+    border: none;
+    transition: all .5s ease;
+    border-radius: 10px;
+    font-size: 2.5em;
+    opacity: .65;
+    font-weight: bold;
+    margin: 1.5em;
+    cursor: pointer;
+    width: 20%;
+  
+}
+
+.back-to-main-starred:hover {
+  opacity: 1;
+  background-color: rgba(10,17,32,0.6);
+}
