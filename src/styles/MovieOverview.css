@@ -21,9 +21,10 @@
 .movie-title-poster {
     font-size: 1.7em;
     text-align: center;
-    border-radius: 10px;
+    border-radius: 0 0 10px 10px;
+    background-color: #131735;
 }
 
 .movie-card-poster {
-    border-radius: 10px 10px 0 0;
+    border-radius: 10px 10px 0 0 ;
 }
