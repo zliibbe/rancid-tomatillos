@@ -13,6 +13,38 @@
   color: white;
 }
 
+.starred-movies-nav {
+	border: none;
+  position: absolute;
+  right: 1rem;
+  top: 2.5rem;
+  background-color: #121633;
+  color: white;
+  border-radius: 10px;
+  padding: .4rem;
+  font-size: 1rem;
+  width: 6rem;
+  display:flex;
+  outline: #fff;
+}
+
+.star-movies-btn-icon {
+  display: block;
+  align-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.starred-movies-nav:hover, 
+.starred-movies-nav:focus  {
+  border: #fff;
+  box-shadow: 0 0 0 3px #131735,
+              0 0 0 6px #fff; 
+  border-radius: 10px;   
+  outline: none;
+  background-color: #1f2766;
+}
+
 a {
   color: white;
 }
