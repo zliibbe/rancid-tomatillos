@@ -96,6 +96,10 @@ h1 {
 }
 
 .star-movie-btn:hover {
+  color: rgba(196, 196, 196, 1);
+}
+
+.star-movie-btn:hover {
   margin-top: 1em;
   /* outline:  */
 }
