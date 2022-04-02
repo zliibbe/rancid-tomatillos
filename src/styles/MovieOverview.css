@@ -1,6 +1,7 @@
 .movie-card {
     opacity: .70;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5)
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
   }
   
   .movie-card:hover, 
@@ -8,7 +9,8 @@
     transform: scale(1.03);
     opacity: 1;
     transition: opacity .01s ease-in, box-shadow 300ms;
-    box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5)
+    box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
+    background-color:#1c214d;
   }
   
   .movie-card:focus-visible {
@@ -22,7 +24,6 @@
     font-size: 1.7em;
     text-align: center;
     border-radius: 0 0 10px 10px;
-    background-color: #131735;
 }
 
 .movie-card-poster {
