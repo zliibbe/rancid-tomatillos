@@ -81,6 +81,7 @@ h1 {
 .avg-rating {
   margin-left: 1em;
   margin-top: 1em;
+  font-size: 1.2rem;
 }
 
 .star-movie-btn {
@@ -91,7 +92,7 @@ h1 {
   margin-top: 1em;
   margin-right: 2em;
   font-size: clamp(.5rem, 1rem, 2rem);
-  outline: none;
+  border: none;
 }
 
 .star-movie-btn:hover {
