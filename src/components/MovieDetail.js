@@ -13,8 +13,9 @@ class MovieDetail extends React.Component {
     this.state = {
       movieDetails: {},
       movieID: movieID,
-      error: null,
-      errorHandling: errorHandling
+      error: '',
+      errorHandling: errorHandling,
+      isStarred: false
     }
   }
 
@@ -36,9 +37,11 @@ class MovieDetail extends React.Component {
       poster_path: this.state.movieDetails.poster_path
     }
     postStarredMovie(movieToStar)
-    .catch(error => console.log(error))
+    .catch(error => {
+      this.setState({ error: error.message, isStarred: false})
+    })
 
-    // this.state.error ? this.setState({isFavorited: false}) : this.setState({isFavorited: true})
+    this.setState({isStarred: true})
   }
 
 
