@@ -44,6 +44,7 @@ const postStarredMovie = (movieToStar) => {
         return response.json()
       }
     })
+    .catch(error => console.log(error))
 }
 
 

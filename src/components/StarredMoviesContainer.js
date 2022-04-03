@@ -8,7 +8,8 @@ class StarredMoviesContainer extends React.Component {
   constructor() {
     super();
     this.state = {
-      starredMovies: []
+      starredMovies: [],
+      error: null
     }
   }
 
