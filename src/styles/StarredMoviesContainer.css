@@ -1,0 +1,52 @@
+.starred-movie-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #131735;
+  width: 200vh;
+  height: 70vw;
+}
+
+.starred-header {
+  display: flex;
+  height: 15vh;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  background-color: #121633;
+  color: white;
+}
+
+.starred-movies-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1em;
+  padding: 1em;
+  background-color: #131735;
+  color: white;
+  height: 50vh;
+  width: 70vw;
+  object-fit: cover;
+} 
+
+.back-to-main-starred {
+    color: white;
+    background-color: transparent;
+    padding: 5px;
+    outline: none;
+    border: none;
+    transition: all .5s ease;
+    border-radius: 10px;
+    font-size: 2.5em;
+    opacity: .65;
+    font-weight: bold;
+    margin: 1.5em;
+    cursor: pointer;
+    width: 20%;
+  
+}
+
+.back-to-main-starred:hover {
+  opacity: 1;
+  background-color: rgba(10,17,32,0.6);
+}

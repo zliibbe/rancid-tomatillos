@@ -1,8 +1,8 @@
 .movie-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 1em;
-    padding: 1em;
-    background-color: #121633;
+    grid-gap: 1.5em;
+    padding: 1.5em;
+    background-color: #131735;
     color: white;
-}
+} 
