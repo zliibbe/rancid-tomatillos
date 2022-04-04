@@ -3,14 +3,15 @@
   flex-direction: column;
   align-items: center;
   background-color: #131735;
-  width: 200vh;
-  height: 70vw;
+  width: 100vw;
+  height: 100vh;
 }
 
 .starred-header {
   display: flex;
   height: 15vh;
-  justify-content: center;
+  justify-content: space-between;
+  width: 70vw;
   align-items: center;
   font-size: 2em;
   background-color: #121633;
@@ -24,29 +25,50 @@
   padding: 1em;
   background-color: #131735;
   color: white;
-  height: 50vh;
+  height: 70vh;
   width: 70vw;
   object-fit: cover;
-} 
+  overflow: scroll;
+}
 
 .back-to-main-starred {
-    color: white;
-    background-color: transparent;
-    padding: 5px;
-    outline: none;
-    border: none;
-    transition: all .5s ease;
-    border-radius: 10px;
-    font-size: 2.5em;
-    opacity: .65;
-    font-weight: bold;
-    margin: 1.5em;
-    cursor: pointer;
-    width: 20%;
-  
+  color: white;
+  background-color: transparent;
+  padding: 5px;
+  outline: none;
+  border: none;
+  transition: all 0.5s ease;
+  border-radius: 10px;
+  font-size: 2.5em;
+  opacity: 0.65;
+  font-weight: bold;
+  margin: 0.5em;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.w-6 {
+  height: 2em;
 }
 
 .back-to-main-starred:hover {
   opacity: 1;
-  background-color: rgba(10,17,32,0.6);
+  background-color: rgba(10, 17, 32, 0.6);
+}
+
+@media screen and (max-width: 425px) {
+  .starred-movies-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .starred-header {
+    font-size: 1em;
+  }
+
+  .back-to-main-starred {
+    margin: 0;
+    height: 3em;
+    width: 3em;
+    z-index: 2;
+  }
 }

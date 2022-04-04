@@ -2,8 +2,8 @@ import "../App.css";
 import React from "react";
 import MoviesContainer from "./MoviesContainer";
 import MovieDetail from "./MovieDetail";
-import StarredMoviesContainer from './StarredMoviesContainer';
-import { fetchAllMovies } from "../apiCalls";
+import StarredMoviesContainer from "./StarredMoviesContainer";
+import { fetchMovies } from "../apiCalls";
 import { Route, Link, Switch } from "react-router-dom";
 import Error from "./Error";
 
@@ -17,8 +17,8 @@ class App extends React.Component {
     };
   }
 
-  errorHandling = () => {
-    this.setState({ error: true});
+  errorHandling = (error) => {
+    this.setState({ error: error.message });
   };
 
   resetError = () => {
@@ -38,7 +38,7 @@ class App extends React.Component {
   };
 
   componentDidMount = () => {
-    fetchAllMovies("/movies", "")
+    fetchMovies("https://rancid-tomatillos.herokuapp.com/api/v2/movies")
       .then((data) => {
         this.sortByTitle(data.movies);
         this.setState({
@@ -46,7 +46,7 @@ class App extends React.Component {
         });
       })
       .catch((error) => {
-        this.errorHandling();
+        this.errorHandling(error);
         console.warn(error);
       });
   };
@@ -54,7 +54,6 @@ class App extends React.Component {
   render() {
     return (
       <main className="App">
-
         <Switch>
           <Route
             exact
@@ -62,15 +61,30 @@ class App extends React.Component {
             render={() => {
               return (
                 <React.Fragment>
-                  {!this.state.error && 
+                  {!this.state.error && (
                     <nav className="header">
                       <h1 className="title">Rancid Tomatillos</h1>
-                      <Link to='/movies/starred'>
-                        <button className="starred-movies-nav"><svg className="star-movies-btn-icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg> Movies</button>
+                      <Link to="/movies/starred">
+                        <button className="starred-movies-nav">
+                          <svg
+                            className="star-movies-btn-icon"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                          </svg>{" "}
+                          Movies
+                        </button>
                       </Link>
                     </nav>
-                  }
-                  {this.state.error && <Error resetError={this.resetError} />}
+                  )}
+                  {this.state.error && (
+                    <Error
+                      resetError={this.resetError}
+                      message={this.state.error}
+                    />
+                  )}
                   {!this.state.error && (
                     <MoviesContainer
                       movieData={this.state.movieData}
@@ -83,10 +97,14 @@ class App extends React.Component {
           />
 
           <Route
-            exact path='/movies/starred'
-            render={() => <StarredMoviesContainer 
-            sortByTitle={this.sortByTitle} 
-            errorHandling={this.errorHandling}/> }
+            exact
+            path="/movies/starred"
+            render={() => (
+              <StarredMoviesContainer
+                sortByTitle={this.sortByTitle}
+                errorHandling={this.errorHandling}
+              />
+            )}
           />
 
           <Route
@@ -95,7 +113,12 @@ class App extends React.Component {
             render={({ match }) => {
               return (
                 <React.Fragment>
-                  {this.state.error && <Error resetError={this.resetError} />}
+                  {this.state.error && (
+                    <Error
+                      resetError={this.resetError}
+                      message={this.state.error}
+                    />
+                  )}
                   {!this.state.error && (
                     <MovieDetail
                       movieID={parseInt(match.params.id)}
@@ -108,9 +131,11 @@ class App extends React.Component {
           />
 
           <Route>
-            <Error />
+            <Error
+              resetError={this.resetError}
+              message="404: The URL you entered is not valid."
+            />
           </Route>
-
         </Switch>
       </main>
     );
