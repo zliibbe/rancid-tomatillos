@@ -9,9 +9,9 @@
 
 .starred-header {
   display: flex;
-  /* height: 15vh; */
+  height: 15vh;
   justify-content: space-between;
-  width: 50%;
+  width: 70vw;
   align-items: center;
   font-size: 2em;
   background-color: #121633;
@@ -43,10 +43,7 @@
     font-weight: bold;
     margin: .5em;
     cursor: pointer;
-    /* width: 20%;
-    height: 20%; */
     font-size: 1rem;
-    border: 1px solid red;
   
 }
 
