@@ -17,8 +17,8 @@ class App extends React.Component {
     };
   }
 
-  errorHandling = () => {
-    this.setState({ error: true});
+  errorHandling = (error) => {
+    this.setState({ error: error.message});
   };
 
   resetError = () => {
@@ -46,7 +46,7 @@ class App extends React.Component {
         });
       })
       .catch((error) => {
-        this.errorHandling();
+        this.errorHandling(error);
         console.warn(error);
       });
   };
@@ -70,7 +70,7 @@ class App extends React.Component {
                       </Link>
                     </nav>
                   }
-                  {this.state.error && <Error resetError={this.resetError} />}
+                  {this.state.error && <Error resetError={this.resetError} message={this.state.error} />}
                   {!this.state.error && (
                     <MoviesContainer
                       movieData={this.state.movieData}
@@ -95,7 +95,7 @@ class App extends React.Component {
             render={({ match }) => {
               return (
                 <React.Fragment>
-                  {this.state.error && <Error resetError={this.resetError} />}
+                  {this.state.error && <Error resetError={this.resetError}  message={this.state.error}/>}
                   {!this.state.error && (
                     <MovieDetail
                       movieID={parseInt(match.params.id)}
@@ -108,7 +108,7 @@ class App extends React.Component {
           />
 
           <Route>
-            <Error />
+            <Error resetError={this.resetError}  message='404: The URL you entered is not valid.'/>
           </Route>
 
         </Switch>
