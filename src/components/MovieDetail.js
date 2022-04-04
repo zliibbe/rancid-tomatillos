@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/MovieDetail.css';
-import { fetchSingleMovie } from '../apiCalls';
+import { fetchMovies } from '../apiCalls';
 import DayJS from 'react-dayjs';
 import { Link } from 'react-router-dom';
 import Error from './Error'
@@ -43,7 +43,7 @@ class MovieDetail extends React.Component {
   }
 
   componentDidMount = () => {
-    fetchSingleMovie(this.state.movieID)
+   fetchMovies(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${this.state.movieID}`)
     .then(data => { 
       this.setState({
         movieDetails: data.movie

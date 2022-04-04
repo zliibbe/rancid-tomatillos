@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 
-const fetchAllMovies = (path) => {
-        return fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/${path}`)
+const fetchMovies = (url) => {
+        return fetch(url)
         .then(response => {
         if (!response.ok) {
             throw new Error('Error with requesting movies.');
@@ -9,39 +9,6 @@ const fetchAllMovies = (path) => {
            return response.json();
           }
         })
-}
-
- const fetchSingleMovie = (id) => {
-    return fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
-    .then(response => {
-    if (!response.ok) {
-        throw new Error('Error with requesting movies.');
-      } else {
-       return response.json();
-      }
-    })
-}
-
-// const fetchMovies = (path, id) => {
-//   return fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/${path}${id}`)
-//   .then(response => {
-//     if (!response.ok) {
-//       throw new Error('Error with requesting movies.');
-//     } else {
-//      return response.json();
-//     }
-//   })
-// }
-
-const fetchStarredMovies = () => {
-  return fetch('http://localhost:3001/api/v1/starredMovies')
-    .then(response => {
-      if(!response.ok) {
-        throw new Error ('Error with requesting movies.');
-      } else {
-        return response.json();
-      }
-    })
 }
 
 const postStarredMovie = (movieToStar) => {
@@ -59,9 +26,4 @@ const postStarredMovie = (movieToStar) => {
     })
 }
 
-
-
-
-
-
-export { fetchAllMovies, fetchSingleMovie, fetchStarredMovies, postStarredMovie }
+export { fetchMovies, postStarredMovie }

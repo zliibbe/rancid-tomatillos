@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/StarredMoviesContainer.css';
 import { Link } from "react-router-dom";
-import { fetchStarredMovies } from "../apiCalls";
+import { fetchMovies } from "../apiCalls";
 import MovieOverview from './MovieOverview';
 import Error from './Error'
 
@@ -23,7 +23,7 @@ class StarredMoviesContainer extends React.Component {
   }
 
   componentDidMount = () => {
-    fetchStarredMovies()
+    fetchMovies('http://localhost:3001/api/v1/starredMovies')
       .then((data) => {
         this.props.sortByTitle(data.movies);
         this.setState({ starredMovies: data.movies})

@@ -3,7 +3,7 @@ import React from "react";
 import MoviesContainer from "./MoviesContainer";
 import MovieDetail from "./MovieDetail";
 import StarredMoviesContainer from './StarredMoviesContainer';
-import { fetchAllMovies } from "../apiCalls";
+import { fetchMovies } from "../apiCalls";
 import { Route, Link, Switch } from "react-router-dom";
 import Error from "./Error";
 
@@ -38,7 +38,7 @@ class App extends React.Component {
   };
 
   componentDidMount = () => {
-    fetchAllMovies("/movies", "")
+    fetchMovies('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
       .then((data) => {
         this.sortByTitle(data.movies);
         this.setState({
