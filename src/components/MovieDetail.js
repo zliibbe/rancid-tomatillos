@@ -57,7 +57,10 @@ class MovieDetail extends React.Component {
   
   render() {
     return (
-      <main className='single-movie-section' style={{backgroundImage: `url(${this.state.movieDetails.backdrop_path})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}}>
+      <main className='single-movie-section' style={ this.state.movieDetails.backdrop_path === "https://www.esm.rochester.edu/uploads/NoPhotoAvailable.jpg" ?
+        {backgroundImage: `url(${this.state.movieDetails.poster_path})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover'} :
+        {backgroundImage: `url(${this.state.movieDetails.backdrop_path})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover'
+      }}>
         <div className='single-movie-container'>
           <section className='movie-main'>
             <div className='poster-rating-container'>
