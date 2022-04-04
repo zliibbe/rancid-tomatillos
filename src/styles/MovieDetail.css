@@ -80,7 +80,10 @@ h1 {
   align-items: center;
   width: 80%;
   margin-left: 2em;
+}
 
+.fav-error {
+  color: red;
 }
 
 .avg-rating {
@@ -106,7 +109,6 @@ h1 {
 
 .star-movie-btn:hover {
   margin-top: 1em;
-  /* outline:  */
 }
 
 .movie-details-section {
@@ -196,6 +198,12 @@ h1 {
   .rating-star-container {
     margin: 0;
     justify-content: flex-start;
+  }
+
+  .fav-error {
+    padding-left: 1em;
+    font-size: .7em;
+    z-index: 2;
   }
 
   .poster-rating-container {
