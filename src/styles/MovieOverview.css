@@ -13,11 +13,14 @@
     background-color:#1c214d;
   }
   
-  .movie-card:focus-visible {
-    box-shadow: 0 0 0 3px #131735,
-                0 0 0 6px #fff; 
-    border-radius: 10px;   
-    outline: none;
+  .movie-card:focus-visible, 
+  .movie-card:focus {
+    border: #fff;
+  box-shadow: 0 0 0 3px #131735,
+              0 0 0 6px #fff; 
+  border-radius: 10px;   
+  outline: none;
+  background-color: #1f2766;
   }
 
 .movie-title-poster {
