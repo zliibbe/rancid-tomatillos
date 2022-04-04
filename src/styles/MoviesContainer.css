@@ -6,3 +6,26 @@
     background-color: #131735;
     color: white;
 } 
+
+@media screen and (max-width: 425px) {
+    .movie-container {
+         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .header {
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 10px;
+    }
+    
+    .starred-movies-nav {
+        position: relative;
+        right: 0;
+        top: 0;
+        margin-bottom: 1em;
+    }
+
+    .title {
+        font-size: 1em;
+    }    
+}
