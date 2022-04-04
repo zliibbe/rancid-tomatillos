@@ -32,3 +32,9 @@
 .movie-card-poster {
     border-radius: 10px 10px 0 0 ;
 }
+
+@media screen and (max-width: 425px) {
+  .movie-title-poster {
+    font-size: 1.3em;
+  }
+}

@@ -25,9 +25,10 @@
   padding: 1em;
   background-color: #131735;
   color: white;
-  height: 50vh;
+  height: 70vh;
   width: 70vw;
   object-fit: cover;
+  overflow: scroll;
 } 
 
 .back-to-main-starred {
@@ -54,4 +55,22 @@
 .back-to-main-starred:hover {
   opacity: 1;
   background-color: rgba(10,17,32,0.6);
+}
+
+@media screen and (max-width: 425px) {
+  .starred-movies-container {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.starred-header {
+  font-size: 1em;
+}
+
+  .back-to-main-starred {
+    margin: 0;
+    height: 3em;  
+    width: 3em;
+    z-index: 2;
+  }
+
 }
