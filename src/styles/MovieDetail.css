@@ -8,11 +8,13 @@ h1 {
 .poster-img,
 .backdrop-img {
   /* width: fit-content;
-  height: fit-content; */
+  /* height: fit-content; */
   object-fit: cover;
 }
 .poster-img {
-  object-fit: cover;
+  width: 80%;
+  /* height: 80%; */
+  /* object-fit: cover; */
   margin-left: 2em
 }
 
@@ -40,6 +42,9 @@ h1 {
 }
 
 .poster-rating-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 40%;
 }
 
@@ -75,7 +80,11 @@ h1 {
 
 .rating-star-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin-left: 2em;
+
 }
 
 .avg-rating {
@@ -135,4 +144,27 @@ h1 {
 
 .back-to-main-container {
   width: 20%;
+}
+
+@media screen and (max-width: 1200px) {
+  .title-description-container {
+    /* margin-left: 50px; */
+    padding-left: 3em;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .rating-star-container {
+    flex-direction: column;
+  }
+
+  .poster-img {
+    width: 100%;
+  }
+
+  .avg-rating {
+    margin-left: 1em;
+    margin-top: 1em;
+    font-size: 1em;
+  }
 }
