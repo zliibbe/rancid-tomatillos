@@ -163,13 +163,13 @@ describe("Main movie view", () => {
     cy.intercept("https://rancid-tomatillos.herokuapp.com/api/v2/movies", {
       statusCode: 422,
     }).as("422 error");
-    cy.visit("http://localhost:3000/").contains("Something went wrong");
+    cy.visit("http://localhost:3000/").contains("Error with requesting movies.");
   });
 
   it("should display error message to user when server is down", () => {
     cy.intercept("https://rancid-tomatillos.herokuapp.com/api/v2/movies", {
       statusCode: 500,
     }).as("500 error");
-    cy.visit("http://localhost:3000/").contains("Something went wrong");
+    cy.visit("http://localhost:3000/").contains("Error with requesting movies.");
   });
 });

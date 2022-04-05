@@ -49,7 +49,7 @@ describe("Favorite movie view", () => {
       .get(".starred-movies-nav")
       .click()
       .get(".starred-header")
-      .contains("Your Starred Movies")
+      .contains("Your Favorite Movies")
       .get(".movie-card")
       .contains("2067");
   });
