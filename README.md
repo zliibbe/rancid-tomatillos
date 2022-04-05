@@ -1,70 +1,114 @@
-# Getting Started with Create React App
+# Rancid Tomatillos 🍅
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Screen Shot 2022-04-04 at 6 07 03 PM](https://user-images.githubusercontent.com/92049763/161653343-b0536fc5-51ad-4e74-a173-90f489566bab.png)
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+Rancid Tomatillos is a paired-project written with the React JavaScript framework in 2-weeks.
 
-### `npm start`
+The site is a crossover mimic of movie review sites like Rotten Tomatoes and streaming websites like Netflix or Hulu. On page load, the user can view a collection of movies -- clicking on a movie poster will route them to that specific movie's details including movie overview, runtime, rating, budget and revenue. From here the user can favorite movies to add them to their favorites list which can be accessed via the main dashboard.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+For the favorite movies user-flow we incorporated a custom backend server using Express.js to serve up those favorites and allow users to star new movies.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The goals of this project were to create an app using the React.js framework, React Router for multi-page application functionality, to consume RESTful APIs via network requests & handling of asynchronous JavaScript, acceptance / end-to-end testing with Cypress, and the self-teaching involved in spinning up a custom backend server with Express.
 
-### `npm test`
+## Motivation
+- Gain competency with React.js fundamentals
+- Utilize acceptance and E2E testing of site and asynchronous JavaScript with Cypress
+- Create a multi-page application with React Router
+- Build an Express.js server with support for GET and POST and error handling
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technology Used
+- React.js
+- Express.js
+- JavaScript
+- CSS3
+- React Router
+- Fetch API
+- Cypress
+- DayJS
 
-### `npm run build`
+## Deployment
+Site deployment coming soon! For now, Rancid Tomatillos requires that this frontend repo be cloned down to your local server via `git clone`. Make sure to install dependencies locally as well - `npm i` and then `npm start` to run.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+You will also need to clone down our [backend Express server](https://github.com/maddielaw/rancid-tomatillos-api) to your local machine and install any local dependencies with `npm i` and then `npm start` to run! 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Features
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Main Dashboard
 
-### `npm run eject`
+On load the user will see all movies with their posters and titles.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![rancid_dash_demo](https://user-images.githubusercontent.com/92049763/161648774-62445db2-18e1-49c2-af55-04bd0619016a.gif)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<details>
+  <summary>Under the Hood</summary>
+  Movies are populated using the fetch API from a remote server and displayed dynamically via React functional components.
+</details>
+</br>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Single Movie Detail
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+When a user clicks on an individual movie poster on the main dashboard they are routed to a page with the details of that specific movie with a unique URL.
 
-## Learn More
+![rancid_single_movie_demo](https://user-images.githubusercontent.com/92049763/161648535-2caf701b-3460-474b-998f-c18b432f1a21.gif)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<details>
+  <summary>Under the Hood</summary>
+  Single movies are retrieved using the fetch API and interpolating a movie's individual ID into the URL. The site's URL is also changed to reflect that individual movie's id via React Router. Users can bookmark this URL to return to later!
+</details>
+</br>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Favorite a Movie
 
-### Code Splitting
+A user can favorite a favorite movie from the single movie detail page, adding it to their list of favorites!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![rancid_fave_demo](https://user-images.githubusercontent.com/92049763/161648886-ae3cb6ca-e3d1-4e2b-9e06-85cbfbd999b1.gif)
 
-### Analyzing the Bundle Size
+<details>
+  <summary>Under the Hood</summary>
+  On click, the user's chosen movie to favorite is packaged and sent via POST request to our own custom backend server where it is stored. The server accounts for any missing parameters as well as duplicates -- users cannot favorite a movie more than once.
+</details>
+</br>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Favorite Movies View 
 
-### Making a Progressive Web App
+From the main dashboard, a user can visit their Starred Movies page where they can view all of their existing favorite movies.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+![rancid_fave_dash_demo](https://user-images.githubusercontent.com/92049763/161649032-225d0b98-2cf5-4cc0-868b-1991f4e9bc5f.gif)
 
-### Advanced Configuration
+<details>
+  <summary>Under the Hood</summary>
+  The favorite movies are populated with the fetch API to our custom Express server to render the user's favorite movies. The user can click on each movie to view details on their favorites.
+</details>
+</br>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Testing
 
-### Deployment
+Rancid Tomatillos is fully end-to-end tested with Cypress. URLs are tested and network requests are stubbed.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+![Screen Shot 2022-04-04 at 6 22 54 PM](https://user-images.githubusercontent.com/92049763/161654579-d6c6c49a-c3e6-43d1-955c-c3dea0c04339.png)
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Responsive Design & Accessibility
+
+Rancid Tomatillos was built to be responsive across desktop, laptop, tablet, and mobile screen sizes and be fully tab and touch focusable for screen-reader accessibility. We are committed to continually improving to ensure our site is accessible to all users and welcome any and all feedback!
+
+![rancid_mobile_demo](https://user-images.githubusercontent.com/92049763/161649607-a5b83ec4-59f8-41b8-bca0-d2cd736b7e47.gif)
+
+
+## Future Additions
+- Add DELETE support to our Express.js server so users can remove favorites
+- Add loading screen to facilitate more seamless user experience in the case of slower internet connections
+- Combine our two APIs into one to better aid in UX and error handling
+- Add a search bar so users can search for movies by name or genre
+- Add in a sliding carousel for the main dashboard
+
+## Credits
+Authors: [Maddie Law](https://github.com/maddielaw) & [Zach Liibbe](https://github.com/zliibbe)
+
+Project spec -> [here](https://frontend.turing.edu/projects/module-3/rancid-tomatillos-v3.html)
+
+[Turing School of Software and Design's GitHub](https://github.com/turingschool-examples)
+
+[Icons - Heroicon](https://heroicons.dev/)
