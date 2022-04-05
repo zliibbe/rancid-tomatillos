@@ -1,4 +1,3 @@
-import { render } from "@testing-library/react";
 
 const fetchMovies = (url) => {
   return fetch(url).then((response) => {
