@@ -34,7 +34,7 @@ class StarredMoviesContainer extends React.Component {
         this.setState({ starredMovies: data.movies });
       })
       .catch((error) => {
-        this.props.errorHandling();
+        this.setState({error: error.message})
         console.warn(error);
       });
   };
@@ -42,7 +42,7 @@ class StarredMoviesContainer extends React.Component {
   render() {
     return (
       <main className="starred-movie-main">
-        {this.state.error && <Error />}
+        {this.state.error && <Error message={this.state.error}/>}
         {!this.state.error && (
           <React.Fragment>
             <nav className="starred-header">
