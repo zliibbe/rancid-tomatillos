@@ -3,9 +3,7 @@ import "../styles/MovieDetail.css";
 import { fetchMovies } from "../apiCalls";
 import DayJS from "react-dayjs";
 import { Link } from "react-router-dom";
-import Error from "./Error";
 import { postStarredMovie } from "../apiCalls";
-import { toHaveStyle } from "@testing-library/jest-dom/dist/matchers";
 
 class MovieDetail extends React.Component {
   constructor({ movieID, errorHandling }) {
@@ -114,11 +112,13 @@ class MovieDetail extends React.Component {
                 {!this.state.isStarred && (
                   <button
                     className="star-movie-btn outline"
+                    aria-label="Favorite Movie button"
                     type="button"
                     onClick={() => this.postNewFavorite()}
                   >
                     <svg
                       className="w-6 h-6"
+                      alt="Favorite Movie Button"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -184,10 +184,11 @@ class MovieDetail extends React.Component {
           </section>
         </div>
         <div className="back-to-main-container">
-          <Link to="/" style={{ textDecoration: "none" }}>
-            <button className="back-to-main" type="button">
+          <Link to="/" alt="Back to Main button"style={{ textDecoration: "none" }}>
+            <button className="back-to-main" aria-label="Back to Main button" type="button">
               <svg
                 className="w-6 h-6"
+                alt="Back to Main button"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"

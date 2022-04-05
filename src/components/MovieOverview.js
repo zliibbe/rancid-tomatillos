@@ -6,7 +6,7 @@ const MovieOverview = ({ id, posterPath, title }) => {
   return (
     <div className="movie-card" tabIndex="1">
       <Link to={`/movies/${id}`} style={{ textDecoration: "none" }}>
-        <img className="movie-card-poster" src={posterPath} />
+        <img className="movie-card-poster" src={posterPath} alt={`${title} Movie Poster`} />
         <h1 className="movie-title-poster">{title}</h1>
       </Link>
     </div>

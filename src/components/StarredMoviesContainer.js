@@ -48,9 +48,10 @@ class StarredMoviesContainer extends React.Component {
             <nav className="starred-header">
               <h1>Your Favorite Movies</h1>
               <Link to="/">
-                <button className="back-to-main-starred" type="button">
+                <button className="back-to-main-starred" aria-label="Back to Main button" type="button">
                   <svg
                     className="w-6 h-6"
+                    alt="Back to Main button"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
