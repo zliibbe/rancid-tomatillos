@@ -22,6 +22,7 @@ The goals of this project were to create an app using the React.js framework, Re
 - React.js
 - Express.js
 - JavaScript
+- HTML / JSX
 - CSS3
 - React Router
 - Fetch API
